@@ -234,6 +234,11 @@ collections:
 
 # These settings control how pages and collections are included in the site
 defaults:
+  # _pages that are not published
+  - scope:
+      path: "_pages"
+    values:
+      published: false
   # _posts
   - scope:
       path: ""
