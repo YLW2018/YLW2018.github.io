@@ -28,10 +28,10 @@ Research Papers
 * [**An Accelerated Active-Set Algorithm for a Quadratic Semi-definite Program with General Constraints**](https://link.springer.com/article/10.1007/s10589-020-00228-5), with Chungen Shen, Wenjuan Xue, & Leihong Zhang, ***Computational Optimization and Applications***, 78(1): 1-42, 2021.([Code](https://github.com/YLW2018/AASA_CODE)) &nbsp;&nbsp;&nbsp;&nbsp;		[JCR Q1, ABS 3]
 * [**Limited Memory BFGS Algorithm for the Matrix Approximation Problem in Frobenius Norm**](https://link.springer.com/article/10.1007/s40314-020-1089-9), with Chungen Shen, Changxing Fan, & Wenjuan Xue, ***Computational and Applied Mathematics***, 39: 1-25, 2020.([Code](https://github.com/YLW2018/LBFGS_CODE)) &nbsp;&nbsp;&nbsp;&nbsp; [JCR Q1]
 
-## Working Progress
+## Working in Progress
 * Dynamic Assortment Optimization with Sequential Consideration Sets, with Rui Zhang.
 
-* Join Optimization of Assortment and Service Capacity Allocation in Centerized Service Systems, with Bipan Zou, Rui Zhang.
+* Join Optimization of Assortment and Service Capacity Allocation in Centralized Service Systems, with Bipan Zou, Rui Zhang.
 
 - New Formulations and Valid Inequalities for the Least Cost Influence Problem on Social Networks, with Rui Zhang, S. Raghu Raghavan.
 
