@@ -234,11 +234,6 @@ collections:
 
 # These settings control how pages and collections are included in the site
 defaults:
-  # _pages that are not published
-  - scope:
-      path: "_pages"
-    values:
-      published: false
   # _posts
   - scope:
       path: ""
@@ -250,6 +245,7 @@ defaults:
       comments: true
       share: true
       related: true
+      published: false
   # _pages
   - scope:
       path: ""
@@ -257,6 +253,7 @@ defaults:
     values:
       layout: single
       author_profile: true
+      published: false
   # _teaching
   - scope:
       path: ""
@@ -266,6 +263,7 @@ defaults:
       author_profile: true
       share: true
       comments: true
+      published: false
   # _publications
   - scope:
       path: ""
@@ -275,6 +273,7 @@ defaults:
       author_profile: true
       share: true
       comments: true
+      published: false
   # _portfolio
   - scope:
       path: ""
@@ -284,6 +283,7 @@ defaults:
       author_profile: true
       share: true
       comment: true
+      published: false
   # _talks
   - scope:
       path: ""
@@ -292,6 +292,7 @@ defaults:
       layout: talk
       author_profile: true
       share: true
+      published: false
 
 
 # Sass/SCSS
