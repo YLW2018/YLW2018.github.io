@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Hi, I am Yunlong Wang (王云龙), a sixth-year PhD candidate at **Shanghai Jiao Tong University** ([SJTU](https://en.sjtu.edu.cn/)), **Antai College of Economics and Management** ([ACEM](https://www.acem.sjtu.edu.cn/en/)), advised by Dr. [Ying Rong](https://www.acem.sjtu.edu.cn/en/faculty/rongying.html) and Dr. [Taotao He](https://taotaoohe.github.io/). I am currently in a two-year visiting program (23 fall - 25 fall) at the University of Colorado Boulder (CU Boulder, Leeds School of Business), advised by Dr. [Rui Zhang](https://rui-zhang.org/). 
+Hi, I am Yunlong Wang (王云龙), a sixth-year PhD candidate at **Shanghai Jiao Tong University** ([SJTU](https://en.sjtu.edu.cn/)), **Antai College of Economics and Management** ([ACEM](https://www.acem.sjtu.edu.cn/en/)), advised by Dr. [Ying Rong](https://www.acem.sjtu.edu.cn/en/faculty/rongying.html) and Dr. [Taotao He](https://taotaoohe.github.io/). I am currently in a two-year visiting program (23 fall - 25 fall) at the University of Colorado Boulder (CU Boulder, [Leeds School of Business](https://www.colorado.edu/business/)), advised by Dr. [Rui Zhang](https://rui-zhang.org/). 
 
 **I am on the 2025-2026 academic job market.**
 
