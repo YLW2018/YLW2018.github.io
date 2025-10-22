@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
+# title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
 author_profile: true
 redirect_from: 
   - /about/
@@ -11,7 +11,7 @@ Hi, I am Yunlong Wang (王云龙), a sixth-year PhD candidate at **Shanghai Jiao
 
 **I am on the 2025-2026 academic job market.**
 
-My research lies at the intersection of discrete choice modeling, optimization, and revenue management, using mixed-integer programming approaches. I focus on the computational and algorithmic aspects of discrete choice models, as well as (social) network-based influence problems. I also have training in continuous optimization, particularly in advanced methods for algorithmic acceleration.
+My research lies at the intersection of **discrete choice modeling**, **optimization**, and **revenue management**, using mixed-integer programming approaches. I focus on the computational and algorithmic aspects of discrete choice models, as well as (social) network-based influence problems. I also have training in continuous optimization, particularly in advanced methods for algorithmic acceleration.
 
 I have a couple of industry internship experiences at **Tencent** ([AI Lab](https://www.aiia-ai.org/col.jsp?id=184)) and Huawei, where I worked on accelerating machine learning algorithms and optimizing scheduling strategies for 5G base station operations, respectively.
 
@@ -19,14 +19,14 @@ I have a couple of industry internship experiences at **Tencent** ([AI Lab](http
 Research Papers
 ======
 ## Under Review
-* **An Integer Programming Approach for Quick-Commerce Assortment Planning**, with Yajing Chen, Taotao He, Ying Rong, ***Management Science***, minor revision (2025). ([arXiv](https://arxiv.org/pdf/2405.02553))
-* **Assortment Optimization for Online Video Games**, with Fan You, Thomas Vossen, Rui Zhang, ***Production and Operations Management*** (POM), major revision (2025).
+* **An Integer Programming Approach for Quick-Commerce Assortment Planning**, with Yajing Chen, Taotao He, Ying Rong, ***Management Science***, minor revision (2025). &nbsp;&nbsp;&nbsp;&nbsp; ([arXiv](https://arxiv.org/pdf/2405.02553))
+* **Assortment Optimization for Online Video Games**, with Fan You, Thomas Vossen, Rui Zhang, ***Production and Operations Management* (POM)**, major revision (2025).
 
 ## Publications
-* [**Omnichannel Product Selection and Shelf Space Planning Optimization**](https://www.sciencedirect.com/science/article/abs/pii/S0305048324000410), with Yajing Chen, Zhimin Wu, ***Omega***, 103074, 2024. 	[JCR Q1, ABS 3]
-* [**Proximal Gradient/Semismooth Newton Methods for Projection onto a Polyhedron via the Duality Gap Active Set Strategy**](https://link.springer.com/article/10.1007/s10915-023-02302-6), with Chungen Shen, Leihong Zhang, & Weihong Yang, ***Journal of Scientific Computing***, 97(1): 3, 2023. (Code)		[JCR Q1]
-* [**An Accelerated Active-Set Algorithm for a Quadratic Semi-definite Program with General Constraints**](https://link.springer.com/article/10.1007/s10589-020-00228-5), with Chungen Shen, Wenjuan Xue, & Leihong Zhang, ***Computational Optimization and Applications***, 78(1): 1-42, 2021. (Code)		[JCR Q1, ABS 3]
-* [**Limited Memory BFGS Algorithm for the Matrix Approximation Problem in Frobenius Norm**](https://link.springer.com/article/10.1007/s40314-020-1089-9), with Chungen Shen, Changxing Fan, & Wenjuan Xue, ***Computational and Applied Mathematics***, 39: 1-25, 2020. (Code)		[JCR Q1]
+* [**Omnichannel Product Selection and Shelf Space Planning Optimization**](https://www.sciencedirect.com/science/article/abs/pii/S0305048324000410), with Yajing Chen, Zhimin Wu, ***Omega***, 103074, 2024. 	&nbsp;&nbsp;&nbsp;&nbsp; [JCR Q1, ABS 3]
+* [**Proximal Gradient/Semismooth Newton Methods for Projection onto a Polyhedron via the Duality Gap Active Set Strategy**](https://link.springer.com/article/10.1007/s10915-023-02302-6), with Chungen Shen, Leihong Zhang, & Weihong Yang, ***Journal of Scientific Computing***, 97(1): 3, 2023. (Code)		&nbsp;&nbsp;&nbsp;&nbsp; [JCR Q1]
+* [**An Accelerated Active-Set Algorithm for a Quadratic Semi-definite Program with General Constraints**](https://link.springer.com/article/10.1007/s10589-020-00228-5), with Chungen Shen, Wenjuan Xue, & Leihong Zhang, ***Computational Optimization and Applications***, 78(1): 1-42, 2021. &nbsp;&nbsp;&nbsp;&nbsp; (Code)		[JCR Q1, ABS 3]
+* [**Limited Memory BFGS Algorithm for the Matrix Approximation Problem in Frobenius Norm**](https://link.springer.com/article/10.1007/s40314-020-1089-9), with Chungen Shen, Changxing Fan, & Wenjuan Xue, ***Computational and Applied Mathematics***, 39: 1-25, 2020. (Code)		&nbsp;&nbsp;&nbsp;&nbsp; [JCR Q1]
 
 ## Working Progress
 * Dynamic Assortment Optimization with Sequential Consideration Sets, with Rui Zhang.
