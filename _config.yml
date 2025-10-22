@@ -29,7 +29,7 @@ author:
   bio              : "PhD Candidate at Shanghai Jiao Tong University (SJTU)"
   location         : "Shanghai, China"
   employer         : "Shanghai Jiao Tong University"
-  uri              : # URL
+  uri              : https://ylw2018.github.io/ # Personal website link
   email            : "wylwork2018@gmail.com"
 
   # Academic websites
@@ -219,16 +219,16 @@ kramdown:
 # These settings control the types of collections used by the template
 collections:
   teaching:
-    output: true
+    output: false
     permalink: /:collection/:path/
   publications:
-    output: true
+    output: false
     permalink: /:collection/:path/
   portfolio:
-    output: true
+    output: false
     permalink: /:collection/:path/
   talks:
-    output: true
+    output: false
     permalink: /:collection/:path/
 
 
