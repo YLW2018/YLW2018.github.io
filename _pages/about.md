@@ -14,8 +14,10 @@ Hi, I am Yunlong Wang (王云龙), a sixth-year PhD candidate at **Shanghai Jiao
 
 My research lies at the intersection of **discrete choice modeling**, **optimization**, and **revenue management**, using mixed-integer programming approaches. I focus on the computational and algorithmic aspects of discrete choice models, as well as (social) network-based influence problems. I also have training in continuous optimization, particularly in advanced methods for algorithmic acceleration.
 
-I have a couple of industry internship experiences at **Tencent** ([AI Lab](https://www.aiia-ai.org/col.jsp?id=184)) and Huawei, where I worked on accelerating machine learning algorithms and optimizing scheduling strategies for 5G base station operations, respectively.
+I have a couple of industry internship experiences at **Tencent** ([AI Lab](https://www.aiia-ai.org/col.jsp?id=184)) and **Huawei**, where I worked on accelerating machine learning algorithms and optimizing scheduling strategies for 5G base station operations, respectively.
 
+
+-----
 
 Research Papers
 ======
