@@ -22,8 +22,8 @@ I have a couple of industry internship experiences at **Tencent** ([AI Lab](http
 Research Papers
 ======
 ## Under Review
-* **Assortment Optimization for Online Video Games**, with Fan You, Thomas Vossen, Rui Zhang, ***Production and Operations Management* (POM)**, *second-round revision and resubmit* (2025). [Job Market Paper]
-* **An Integer Programming Approach for Quick-Commerce Assortment Planning**, with Yajing Chen, Taotao He, Ying Rong, ***Management Science***, *accepted*. &nbsp;&nbsp;&nbsp;&nbsp; ([arXiv](https://arxiv.org/pdf/2405.02553))
+* [**Assortment Optimization for Online Video Games**](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5769002), with Fan You, Thomas Vossen, Rui Zhang, ***Production and Operations Management* (POM)**, *second-round revision and resubmit* (2025). [Job Market Paper]
+* [**An Integer Programming Approach for Quick-Commerce Assortment Planning**](https://arxiv.org/pdf/2405.02553), with Yajing Chen, Taotao He, Ying Rong, ***Management Science***, *accepted*. &nbsp;&nbsp;&nbsp;&nbsp;
 
 
 ## Publications
