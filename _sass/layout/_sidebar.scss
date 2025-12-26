@@ -94,10 +94,11 @@
   }
 
   img {
-    max-width: 120px;
-    width: 120px;
+    max-width: 200px;
+    width: 200px;
     height: auto;
     border-radius: 50px;
+    margin-bottom: 15px;
 
     @include breakpoint($large) {
       padding: 5px;
@@ -118,6 +119,7 @@
     width: 100%;
     padding-left: 0;
     padding-right: 0;
+    margin-top: 15px;
   }
 }
 
