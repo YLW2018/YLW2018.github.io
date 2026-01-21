@@ -8,7 +8,7 @@ redirect_from:
 output: true
 ---
 
-Hi, I am Yunlong Wang (王云龙), a sixth-year PhD candidate at **Shanghai Jiao Tong University** ([SJTU](https://en.sjtu.edu.cn/)), **Antai College of Economics and Management** ([ACEM](https://www.acem.sjtu.edu.cn/en/)), advised by Dr. [Ying Rong](https://www.acem.sjtu.edu.cn/en/faculty/rongying.html) and Dr. [Taotao He](https://taotaoohe.github.io/). I am currently in a two-year visiting program (23 fall - 25 fall) at the University of Colorado Boulder (CU Boulder, [Leeds School of Business](https://www.colorado.edu/business/)), advised by Dr. [Rui Zhang](https://rui-zhang.org/). 
+Hi, I am Yunlong Wang (王云龙), a sixth-year PhD candidate at **Shanghai Jiao Tong University** ([SJTU](https://en.sjtu.edu.cn/)), **Antai College of Economics and Management** ([ACEM](https://www.acem.sjtu.edu.cn/en/)), advised by Dr. [Ying Rong](https://www.acem.sjtu.edu.cn/en/faculty/rongying.html) and Dr. [Taotao He](https://taotaoohe.github.io/). I conducted visiting research at the University of Colorado Boulder (CU Boulder, [Leeds School of Business](https://www.colorado.edu/business/)) for two years (2023 - 2025), advised by Dr. [Rui Zhang](https://rui-zhang.org/). 
 
 **I am on the 2025-2026 academic job market.**
 
@@ -22,7 +22,7 @@ I have a couple of industry internship experiences at **Tencent** ([AI Lab](http
 Research Papers
 ======
 ## Under Review
-* [**Assortment Optimization for Online Video Games**](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5769002), with Fan You, Thomas Vossen, Rui Zhang, ***Production and Operations Management* (POM)**, *second-round revision and resubmit* (2025). [Job Market Paper]
+* [**Assortment Optimization for Online Video Games**](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5769002), with Fan You, Thomas Vossen, Rui Zhang, ***Production and Operations Management* (POM)**, *conditionally accepted* (2026). [Job Market Paper]
 * [**An Integer Programming Approach for Quick-Commerce Assortment Planning**](https://arxiv.org/pdf/2405.02553), with Yajing Chen, Taotao He, Ying Rong, ***Management Science***, *accepted*. &nbsp;&nbsp;&nbsp;&nbsp;
 
 
