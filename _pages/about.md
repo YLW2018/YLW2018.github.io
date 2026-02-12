@@ -23,7 +23,7 @@ Research Papers
 ======
 ## Under Review
 * [**Assortment Optimization for Online Video Games**](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5769002), with Fan You, Thomas Vossen, Rui Zhang, ***Production and Operations Management* (POM)**, *conditional accept*. [Job Market Paper]
-* [**An Integer Programming Approach for Quick-Commerce Assortment Planning**](https://arxiv.org/pdf/2405.02553), with Yajing Chen, Taotao He, Ying Rong, ***Management Science***, *accept*. &nbsp;&nbsp;&nbsp;&nbsp;
+* [**An Integer Programming Approach for Quick-Commerce Assortment Planning**](https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2023.02996), with Yajing Chen, Taotao He, Ying Rong, ***Management Science***, *accept*. &nbsp;&nbsp;&nbsp;&nbsp;
 
 
 ## Publications
