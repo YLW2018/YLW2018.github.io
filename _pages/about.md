@@ -14,7 +14,7 @@ Hi, I am Yunlong Wang (王云龙), a sixth-year PhD candidate at **Shanghai Jiao
 
 My research lies at the intersection of **discrete choice modeling**, **optimization**, and **revenue management**, using mixed-integer programming approaches. I focus on the computational and algorithmic aspects of discrete choice models, as well as (social) network-based influence problems. I also have training in continuous optimization, particularly in advanced methods for algorithmic acceleration.
 
-I have a couple of industry internship experiences at **Tencent** ([AI Lab](https://www.aiia-ai.org/col.jsp?id=184)) and **Huawei**, where I worked on accelerating machine learning algorithms and optimizing scheduling strategies for 5G base station operations, respectively.
+I also gained industry research experiences at **Tencent** ([AI Lab](https://www.aiia-ai.org/col.jsp?id=184)) and **Huawei**, where I worked on accelerating machine learning algorithms and optimizing scheduling strategies for 5G base station operations, respectively.
 
 
 -----
@@ -32,10 +32,10 @@ Research Papers
 * [An Accelerated Active-Set Algorithm for a Quadratic Semi-definite Program with General Constraints](https://link.springer.com/article/10.1007/s10589-020-00228-5), with Chungen Shen, Wenjuan Xue, & Leihong Zhang, ***Computational Optimization and Applications***, 78(1): 1-42, 2021.([Code](https://github.com/YLW2018/AASA_CODE)) &nbsp;&nbsp;&nbsp;&nbsp;		[JCR Q1, ABS 3]
 * [Limited Memory BFGS Algorithm for the Matrix Approximation Problem in Frobenius Norm](https://link.springer.com/article/10.1007/s40314-020-1089-9), with Chungen Shen, Changxing Fan, & Wenjuan Xue, ***Computational and Applied Mathematics***, 39: 1-25, 2020.([Code](https://github.com/YLW2018/LBFGS_CODE)) &nbsp;&nbsp;&nbsp;&nbsp; [JCR Q1]
 
-## Working in Progress
+## Work in Progress
 * Dynamic Assortment Optimization with Sequential Consideration Sets, with Rui Zhang.
 
-* Join Optimization of Assortment and Service Capacity Allocation in Centralized Service Systems, with Bipan Zou, Rui Zhang.
+* Joint Optimization of Assortment and Service Capacity Allocation in Centralized Service Systems, with Bipan Zou, Rui Zhang.
 
 - New Formulations and Valid Inequalities for the Least Cost Influence Problem on Social Networks, with Rui Zhang, S. Raghu Raghavan.
 
@@ -49,7 +49,7 @@ Conferences and Talks
   - 2025 INFORMS Revenue Management and Pricing Section Conference, New York, July 2025.
   - 2025 INFORMS International Meeting, Singapore, July 2025.
   - 2025 Purdue Supply Chain and Operations Management Conference, Purdue, August 2025.
-  - 2025 INFORMS Annual Metting, Atlanta, October 2025.
+  - 2025 INFORMS Annual Meeting, Atlanta, October 2025.
 
 * New Formulations and Valid Inequalities for the Least Cost Influence Problem on Social Networks.
   - 2024 INFORMS Telecommunications and Network Analytics Conference, Online, May 2024.
@@ -64,3 +64,21 @@ Conferences and Talks
   - Mathematical Optimization Society - Operations Research Society of China (ORSC-MOS23), Chengdu, May 2023
   - An Accelerated Active-set Algorithm for Semidefinite Programs with General Constraints.
   - The 3rd Statistics and Operations Research Young Scholars Forum, Operations Research Association in Shanghai, December 2019.
+
+
+Service
+======
+- Reviewer of ***Networks***.
+- Session chair of 2025 INFORMS Annual Meeting, Atlanta, October 2025.
+- Session chair of 2025 INFORMS International Meeting, Singapore, July 2025.
+- Session chair of 2024 INFORMS Annual Meeting, Seattle, October 2024.
+- Coordinator and Team Leader, Doctoral Forum of Antai College of Economics and Management, Shanghai Jiao
+Tong University, July 2023.
+
+Honors
+======
+- Outstanding Paper Award in the Doctoral Forum of ACEM, Shanghai Jiao Tong University. <span style="float: right; white-space: nowrap;">2023</span>
+- First Prize for Excellent Paper in the 3rd Statistics and Operations Research Young Scholars Forum. <span style="float: right; white-space: nowrap;">2019</span>
+- Second Prize in the National Post-Graduate Mathematical Contest in Modeling. <span style="float: right; white-space: nowrap;">2018</span>
+- First Prize in the Chinese College Students' Statistical Modeling Competition. <span style="float: right; white-space: nowrap;">2017</span>
+- Graduation with Honor: Distinctive Graduate Award of Shanghai. <span style="float: right; white-space: nowrap;">2017</span>
