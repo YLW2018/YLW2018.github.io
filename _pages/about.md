@@ -94,13 +94,21 @@ Interesting Visualization
         Drag to rotate · Scroll to zoom · Adjust y₀ to slide cross-section
       </p>
     </div>
-    <button onclick="toggleFS()" id="fs-btn"
-      style="font-size:12px; padding:6px 14px; cursor:pointer;
-             border-radius:6px; border:1px solid #ccc;
-             background:#f5f5f5; color:#333; white-space:nowrap;
-             flex-shrink:0; margin-left:12px;">
-      ⛶ 全屏
-    </button>
+    <div style="display:flex; gap:8px; flex-shrink:0; margin-left:12px; align-items:center;">
+      <a href="/files/perspective_cone.html" target="_blank"
+         style="font-size:12px; padding:6px 14px; cursor:pointer;
+                border-radius:6px; border:1px solid #f97316;
+                background:transparent; color:#f97316;
+                text-decoration:none; white-space:nowrap;">
+        ↗ Full Experience
+      </a>
+      <button onclick="toggleFS()" id="fs-btn"
+        style="font-size:12px; padding:6px 14px; cursor:pointer;
+               border-radius:6px; border:1px solid #ccc;
+               background:#f5f5f5; color:#333; white-space:nowrap;">
+        ⛶ Fullscreen
+      </button>
+    </div>
   </div>
 
   <div id="cone-container" style="width:100%; position:relative;">
@@ -139,7 +147,7 @@ function toggleFS() {
   const c = document.getElementById('cone-container');
   const btn = document.getElementById('fs-btn');
   const isFS = c.classList.toggle('fullscreen');
-  btn.textContent = isFS ? '✕ Esc to exit fullscreen' : '⛶ fullscreen';
+  btn.textContent = isFS ? '✕ Exit Fullscreen' : '⛶ Fullscreen';
   document.body.style.overflow = isFS ? 'hidden' : '';
 }
 document.addEventListener('keydown', function(e) {
@@ -147,7 +155,7 @@ document.addEventListener('keydown', function(e) {
     const c = document.getElementById('cone-container');
     if (c.classList.contains('fullscreen')) {
       c.classList.remove('fullscreen');
-      document.getElementById('fs-btn').textContent = '⛶ fullscreen';
+      document.getElementById('fs-btn').textContent = '⛶ Fullscreen';
       document.body.style.overflow = '';
     }
   }
