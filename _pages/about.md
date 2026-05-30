@@ -32,7 +32,7 @@ Research Papers
     drag to rotate, adjust y₀ to slide the cross-section.
   </p>
   <iframe
-    src="/files/perspective_cone.html"
+    src="/files/perspective_cone_advanced.html"
     width="100%"
     height="780px"
     style="border:1px solid #ddd; border-radius:8px;"
