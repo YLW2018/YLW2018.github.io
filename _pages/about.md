@@ -25,21 +25,6 @@ Research Papers
 * [**Assortment Optimization for Online Video Games**](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5769002), with Fan You, Thomas Vossen, Rui Zhang, ***Production and Operations Management* (POM)**, *conditional accept*. [Job Market Paper]
 * [**An Integer Programming Approach for Quick-Commerce Assortment Planning**](https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2023.02996), with Yajing Chen, Taotao He, Ying Rong, ***Management Science***, *accept*. &nbsp;&nbsp;&nbsp;&nbsp;
 
-<div style="margin: 2em 0;">
-  <h2>Interactive Demo: Perspective Cone</h2>
-  <p style="font-size:14px; color:#666; margin-bottom:8px;">
-    Visualization of perspective cone construction — 
-    drag to rotate, adjust y₀ to slide the cross-section.
-  </p>
-  <iframe
-    src="/files/perspective_cone_advanced.html"
-    width="100%"
-    height="780px"
-    style="border:1px solid #ddd; border-radius:8px;"
-    title="Perspective Cone Visualization"
-    loading="lazy">
-  </iframe>
-</div>
 
 
 ## Publications
@@ -98,3 +83,73 @@ Honors
 - Second Prize in the National Post-Graduate Mathematical Contest in Modeling. <span style="float: right; white-space: nowrap;">2018</span>
 - First Prize in the Chinese College Students' Statistical Modeling Competition. <span style="float: right; white-space: nowrap;">2017</span>
 - Graduation with Honor: Distinctive Graduate Award of Shanghai. <span style="float: right; white-space: nowrap;">2017</span>
+
+Interesting Visualization
+======
+<div style="margin: 2em 0;">
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+    <div>
+      <h2 style="margin:0">Interactive Demo: Perspective Cone</h2>
+      <p style="font-size:13px; color:#888; margin:4px 0 0;">
+        Drag to rotate · Scroll to zoom · Adjust y₀ to slide cross-section
+      </p>
+    </div>
+    <button onclick="toggleFS()" id="fs-btn"
+      style="font-size:12px; padding:6px 14px; cursor:pointer;
+             border-radius:6px; border:1px solid #ccc;
+             background:#f5f5f5; color:#333; white-space:nowrap;
+             flex-shrink:0; margin-left:12px;">
+      ⛶ 全屏
+    </button>
+  </div>
+
+  <div id="cone-container" style="width:100%; position:relative;">
+    <iframe
+      id="cone-iframe"
+      src="/files/perspective_cone.html"
+      width="100%"
+      height="900px"
+      style="border:1px solid #ddd; border-radius:8px; display:block;"
+      title="Perspective Cone Visualization"
+      loading="lazy">
+    </iframe>
+  </div>
+</div>
+
+<style>
+  #cone-container.fullscreen {
+    position: fixed !important;
+    top: 0; left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999;
+    background: #0f1117;
+    border-radius: 0 !important;
+  }
+  #cone-container.fullscreen #cone-iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+</style>
+
+<script>
+function toggleFS() {
+  const c = document.getElementById('cone-container');
+  const btn = document.getElementById('fs-btn');
+  const isFS = c.classList.toggle('fullscreen');
+  btn.textContent = isFS ? '✕ Esc to exit fullscreen' : '⛶ fullscreen';
+  document.body.style.overflow = isFS ? 'hidden' : '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const c = document.getElementById('cone-container');
+    if (c.classList.contains('fullscreen')) {
+      c.classList.remove('fullscreen');
+      document.getElementById('fs-btn').textContent = '⛶ fullscreen';
+      document.body.style.overflow = '';
+    }
+  }
+});
+</script>
