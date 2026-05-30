@@ -25,6 +25,22 @@ Research Papers
 * [**Assortment Optimization for Online Video Games**](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5769002), with Fan You, Thomas Vossen, Rui Zhang, ***Production and Operations Management* (POM)**, *conditional accept*. [Job Market Paper]
 * [**An Integer Programming Approach for Quick-Commerce Assortment Planning**](https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2023.02996), with Yajing Chen, Taotao He, Ying Rong, ***Management Science***, *accept*. &nbsp;&nbsp;&nbsp;&nbsp;
 
+<div style="margin: 2em 0;">
+  <h2>Interactive Demo: Perspective Cone</h2>
+  <p style="font-size:14px; color:#666; margin-bottom:8px;">
+    Visualization of perspective cone construction — 
+    drag to rotate, adjust y₀ to slide the cross-section.
+  </p>
+  <iframe
+    src="/files/perspective_cone.html"
+    width="100%"
+    height="780px"
+    style="border:1px solid #ddd; border-radius:8px;"
+    title="Perspective Cone Visualization"
+    loading="lazy">
+  </iframe>
+</div>
+
 
 ## Publications
 * [Omnichannel Product Selection and Shelf Space Planning Optimization](https://www.sciencedirect.com/science/article/abs/pii/S0305048324000410), with Yajing Chen, Zhimin Wu, ***Omega***, 103074, 2024. 	&nbsp;&nbsp;&nbsp;&nbsp; [JCR Q1, ABS 3]
