@@ -86,7 +86,8 @@ Honors
 
 Interesting Visualization
 ======
-<div style="margin: 2em 0;">
+- The **perspective cone** originates from [**An Integer Programming Approach for Quick-Commerce Assortment Planning**](https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2023.02996) and [Taotao](https://taotaoohe.github.io/).
+<div style="margin: 0.1em 0;">
   <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
     <div>
       <h2 style="margin:0">Interactive Demo: Perspective Cone</h2>
