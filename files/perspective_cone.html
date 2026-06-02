@@ -427,7 +427,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setClearColor(0x0a0e1a, 1);
 const scene = new THREE.Scene();
 const cam   = new THREE.PerspectiveCamera(45, 1, 0.01, 200);
-let elev=28, azim=210, radius=7, animating=false, y0val=1.0;
+let elev=28, azim=210, radius=7, animating=true, y0val=1.0;
 
 function camPos() {
   const e=elev*Math.PI/180, a=azim*Math.PI/180;
@@ -898,6 +898,9 @@ addPointRow(0,0); addPointRow(1,0); addPointRow(0,1); addPointRow(1,1);
 
 updateY0(1.0); updateCam();
 applyLang();   // apply zh strings on load
+// sync anim button to initial animating=true state
+document.getElementById('anim-btn').textContent = T[lang].animPause;
+document.getElementById('anim-btn').classList.add('active');
 applyF();
 
 (function render(){
