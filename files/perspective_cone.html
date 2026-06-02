@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Perspective Cone — N=2</title>
 <style>
-/* ── Theme variables ── */
 body.dark {
   --bg:#0f1117; --bg-canvas:#0a0e1a; --bg-card:#161b2e;
   --border:#1e2a3a; --border2:#2d3a50;
@@ -41,8 +40,24 @@ body{
 h1{font-size:22px;font-weight:500;margin-bottom:3px;}
 .subtitle{font-size:13px;color:var(--text-muted);margin-bottom:14px;}
 
-#theme-toggle{
+/* ── Top-right toggles ── */
+#top-controls{
   position:absolute;top:18px;right:20px;
+  display:flex;align-items:center;gap:14px;
+}
+/* Lang toggle */
+#lang-toggle{
+  display:flex;align-items:center;gap:0;
+  border:1px solid var(--border2);border-radius:6px;overflow:hidden;
+  font-size:12px;cursor:pointer;user-select:none;
+}
+.lang-btn{
+  padding:4px 10px;background:var(--btn-bg);color:var(--text-muted);
+  border:none;cursor:pointer;transition:background .15s,color .15s;font-size:12px;
+}
+.lang-btn.active{background:#f97316;color:#fff;}
+/* Theme toggle */
+#theme-toggle{
   display:flex;align-items:center;gap:8px;
   font-size:12px;color:var(--text-muted);cursor:pointer;user-select:none;
 }
@@ -77,11 +92,9 @@ canvas{width:100%!important;height:100%!important;display:block;}
 #f-panel{
   width:min(1060px,100%);margin-top:8px;
   background:var(--bg-card);border:1px solid var(--border);
-  border-radius:10px;padding:12px 16px;
-  transition:background .25s;
+  border-radius:10px;padding:12px 16px;transition:background .25s;
 }
 #f-panel h3{font-size:11px;font-weight:500;color:var(--text-hdr);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
-/* points mode */
 #pts-area{display:flex;flex-direction:column;gap:6px;}
 .pt-row{display:flex;align-items:center;gap:6px;}
 .pt-row input{
@@ -91,20 +104,15 @@ canvas{width:100%!important;height:100%!important;display:block;}
 }
 .pt-row input::-webkit-inner-spin-button{-webkit-appearance:none;}
 .pt-row .pt-lbl{font-size:12px;color:var(--text-muted);min-width:16px;}
-.pt-row .rm-btn{
-  font-size:11px;padding:2px 7px;cursor:pointer;border-radius:4px;
-  border:1px solid var(--border2);background:var(--btn-bg);color:var(--text-muted);
-}
+.pt-row .rm-btn{font-size:11px;padding:2px 7px;cursor:pointer;border-radius:4px;border:1px solid var(--border2);background:var(--btn-bg);color:var(--text-muted);}
 .pt-row .rm-btn:hover{background:var(--btn-hover);}
 #add-pt-btn{font-size:12px;padding:4px 10px;cursor:pointer;border-radius:5px;border:1px dashed var(--border2);background:transparent;color:var(--text-muted);}
 #add-pt-btn:hover{background:var(--btn-hover);}
-/* ineq mode */
 #ineq-area{display:flex;flex-direction:column;gap:6px;}
 .ineq-row{display:flex;align-items:center;gap:6px;}
 .ineq-row input[type=text]{
   flex:1;background:var(--input-bg);border:1px solid var(--input-bd);
-  color:var(--input-tx);font-size:12px;padding:5px 8px;border-radius:5px;
-  font-family:monospace;
+  color:var(--input-tx);font-size:12px;padding:5px 8px;border-radius:5px;font-family:monospace;
 }
 .ineq-row input[type=text]:focus{outline:1px solid #f97316;}
 .ineq-row .rm-btn{font-size:11px;padding:2px 7px;cursor:pointer;border-radius:4px;border:1px solid var(--border2);background:var(--btn-bg);color:var(--text-muted);}
@@ -112,61 +120,39 @@ canvas{width:100%!important;height:100%!important;display:block;}
 #add-ineq-btn{font-size:12px;padding:4px 10px;cursor:pointer;border-radius:5px;border:1px dashed var(--border2);background:transparent;color:var(--text-muted);}
 #add-ineq-btn:hover{background:var(--btn-hover);}
 #ineq-hint{font-size:11px;color:var(--text-hint);margin-top:5px;line-height:1.5;}
-#apply-btn{
-  font-size:12px;padding:5px 16px;cursor:pointer;border-radius:6px;
-  border:1px solid #f97316;background:#f97316;color:#fff;margin-top:8px;
-  transition:opacity .15s;
-}
+#apply-btn{font-size:12px;padding:5px 16px;cursor:pointer;border-radius:6px;border:1px solid #f97316;background:#f97316;color:#fff;margin-top:8px;transition:opacity .15s;}
 #apply-btn:hover{opacity:.88;}
 #f-status{font-size:11px;margin-top:6px;padding:4px 8px;border-radius:4px;display:none;}
 #f-status.ok{background:var(--tag-bg);color:var(--tag-tx);display:block;}
 #f-status.err{background:var(--err-bg);color:var(--err-tx);display:block;}
 
 /* ── Controls ── */
-#controls{
-  width:min(1060px,100%);margin-top:10px;
-  display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;
-}
+#controls{width:min(1060px,100%);margin-top:10px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
 .ctrl-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;transition:background .25s;}
 .ctrl-card h3{font-size:11px;font-weight:500;color:var(--text-hdr);text-transform:uppercase;letter-spacing:.08em;margin-bottom:9px;}
 .ctrl-row{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
 .ctrl-row:last-child{margin-bottom:0;}
-.ctrl-row label{min-width:56px;font-size:12px;color:var(--text-muted);flex-shrink:0;}
+.ctrl-row label{min-width:68px;font-size:12px;color:var(--text-muted);flex-shrink:0;}
 .ctrl-row input[type=range]{flex:1;accent-color:#f97316;}
 .ctrl-row .val{min-width:38px;text-align:right;font-size:12px;color:#f97316;font-variant-numeric:tabular-nums;}
-.ctrl-row input[type=number]{
-  width:52px;background:var(--num-bg);border:1px solid var(--border2);
-  color:#f97316;font-size:12px;padding:2px 5px;border-radius:4px;
-  text-align:center;-moz-appearance:textfield;
-}
+.ctrl-row input[type=number]{width:52px;background:var(--num-bg);border:1px solid var(--border2);color:#f97316;font-size:12px;padding:2px 5px;border-radius:4px;text-align:center;-moz-appearance:textfield;}
 .ctrl-row input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
 .btn-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:9px;}
-button.ctrl-btn{
-  font-size:12px;padding:5px 12px;cursor:pointer;border-radius:6px;
-  border:1px solid var(--border2);background:var(--btn-bg);color:var(--text);
-  transition:background .12s;
-}
+button.ctrl-btn{font-size:12px;padding:5px 12px;cursor:pointer;border-radius:6px;border:1px solid var(--border2);background:var(--btn-bg);color:var(--text);transition:background .12s;}
 button.ctrl-btn:hover{background:var(--btn-hover);}
 button.ctrl-btn.active{background:var(--btn-a-bg);border-color:var(--btn-a-bd);color:var(--btn-a-tx);}
 .chk-row{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--lbl);margin-bottom:6px;cursor:pointer;}
 .chk-row:last-child{margin-bottom:0;}
 .chk-row input{accent-color:#f97316;width:13px;height:13px;cursor:pointer;}
+.reset-hint{font-size:11px;color:var(--text-hdr);margin-top:4px;margin-bottom:5px;}
 
 /* ── Legend ── */
-#legend{
-  width:min(1060px,100%);margin-top:10px;
-  display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--text-muted);
-}
+#legend{width:min(1060px,100%);margin-top:10px;display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--text-muted);}
 .leg{display:flex;align-items:center;gap:5px;}
 .leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
 
 /* ── Formula ── */
-#formula{
-  width:min(1060px,100%);margin-top:12px;
-  background:var(--formula-bg);border:1px solid var(--border);
-  border-left:3px solid #f97316;border-radius:10px;padding:12px 16px;
-  font-size:13px;color:var(--text-muted);line-height:1.85;transition:background .25s;
-}
+#formula{width:min(1060px,100%);margin-top:12px;background:var(--formula-bg);border:1px solid var(--border);border-left:3px solid #f97316;border-radius:10px;padding:12px 16px;font-size:13px;color:var(--text-muted);line-height:1.85;transition:background .25s;}
 #formula .math{color:var(--formula-math);font-style:italic;}
 #formula .hi{color:#f97316;}
 .tip{margin-top:8px;font-size:11px;color:var(--text-hint);text-align:center;}
@@ -174,27 +160,33 @@ button.ctrl-btn.active{background:var(--btn-a-bg);border-color:var(--btn-a-bd);c
 </head>
 <body class="dark">
 
-<label id="theme-toggle" title="切换配色模式">
-  <span id="theme-label">🌙 Dark</span>
-  <div class="tog-track"><div class="tog-thumb"></div></div>
-</label>
+<div id="top-controls">
+  <!-- Language toggle -->
+  <div id="lang-toggle">
+    <button class="lang-btn active" id="lang-zh" onclick="setLang('zh')">中文</button>
+    <button class="lang-btn" id="lang-en" onclick="setLang('en')">EN</button>
+  </div>
+  <!-- Theme toggle -->
+  <label id="theme-toggle" title="">
+    <span id="theme-label">🌙 Dark</span>
+    <div class="tog-track"><div class="tog-thumb"></div></div>
+  </label>
+</div>
 
-<h1>Perspective Cone &nbsp;—&nbsp; <span style="color:#f97316">N = 2</span></h1>
-<p class="subtitle">将 ℝ² 中的几何 𝒻 嵌入 ℝ³，从原点透视扫描形成锥体</p>
+<h1 id="title">Perspective Cone &nbsp;—&nbsp; <span style="color:#f97316">N = 2</span></h1>
+<p class="subtitle" id="subtitle">将 ℝ² 中的几何 𝒻 嵌入 ℝ³，从原点透视扫描形成锥体</p>
 
 <div id="pc-wrap"><canvas id="pc"></canvas></div>
 
-<!-- Mode tabs -->
 <div id="mode-tabs">
-  <button class="mode-tab active" id="tab-pts" onclick="setMode('pts')">📍 点集模式（手动输入顶点）</button>
-  <button class="mode-tab" id="tab-ineq" onclick="setMode('ineq')">📐 区域模式（不等式刻画 𝒻）</button>
+  <button class="mode-tab active" id="tab-pts" onclick="setMode('pts')" data-zh="📍 点集模式（手动输入顶点）" data-en="📍 Point Set Mode (enter vertices)">📍 点集模式（手动输入顶点）</button>
+  <button class="mode-tab" id="tab-ineq" onclick="setMode('ineq')" data-zh="📐 区域模式（不等式刻画 𝒻）" data-en="📐 Region Mode (define 𝒻 by inequalities)">📐 区域模式（不等式刻画 𝒻）</button>
 </div>
 
-<!-- F input panel -->
 <div id="f-panel">
   <!-- Points mode -->
   <div id="pts-mode">
-    <h3>𝒻 的点坐标（每行一个点）</h3>
+    <h3 id="pts-h3">𝒻 的点坐标（每行一个点）</h3>
     <div id="pts-area"></div>
     <button id="add-pt-btn" onclick="addPointRow()">＋ 添加点</button>
     <br>
@@ -203,138 +195,281 @@ button.ctrl-btn.active{background:var(--btn-a-bg);border-color:var(--btn-a-bd);c
   </div>
   <!-- Inequalities mode -->
   <div id="ineq-mode" style="display:none">
-    <h3>用不等式刻画 𝒻 ⊂ ℝ²（变量：x1, x2）</h3>
+    <h3 id="ineq-h3">用不等式刻画 𝒻 ⊂ ℝ²（变量：x1, x2）</h3>
     <div id="ineq-area"></div>
     <button id="add-ineq-btn" onclick="addIneqRow()">＋ 添加不等式</button>
-    <div id="ineq-hint">
-      支持：<code>x1 + x2 &lt;= 1</code>，<code>x1 &gt;= 0</code>，<code>2*x1 - x2 &lt; 0.5</code>，<code>x1^2 + x2^2 &lt;= 1</code> 等<br>
-      运算符：<code>+  -  *  /  ^  ()</code>，比较：<code>&lt;=  &gt;=  &lt;  &gt;  =</code>
-    </div>
-    <button id="apply-btn" onclick="applyF()">▶ 更新几何</button>
-    <div id="f-status"></div>
+    <div id="ineq-hint"></div>
+    <button id="apply-btn2" onclick="applyF()">▶ 更新几何</button>
+    <div id="f-status2"></div>
   </div>
 </div>
 
 <div id="controls">
   <!-- Card 1: Camera -->
   <div class="ctrl-card">
-    <h3>视角</h3>
-    <div class="ctrl-row"><label>仰角</label><input type="range" id="elev" min="5" max="85" value="28"><span class="val" id="elev-val">28°</span></div>
-    <div class="ctrl-row"><label>方位角</label><input type="range" id="azim" min="0" max="360" value="210"><span class="val" id="azim-val">210°</span></div>
-    <div class="ctrl-row"><label>缩放</label><input type="range" id="zoom" min="3" max="14" step="0.5" value="7"><span class="val" id="zoom-val">7.0</span></div>
+    <h3 id="card1-h3">视角</h3>
+    <div class="ctrl-row"><label id="lbl-elev">仰角</label><input type="range" id="elev" min="5" max="85" value="28"><span class="val" id="elev-val">28°</span></div>
+    <div class="ctrl-row"><label id="lbl-azim">方位角</label><input type="range" id="azim" min="0" max="360" value="210"><span class="val" id="azim-val">210°</span></div>
+    <div class="ctrl-row"><label id="lbl-zoom">缩放</label><input type="range" id="zoom" min="3" max="14" step="0.5" value="7"><span class="val" id="zoom-val">7.0</span></div>
     <div class="btn-row" style="margin-top:10px">
       <button class="ctrl-btn" id="anim-btn">▶ 自动旋转</button>
     </div>
   </div>
   <!-- Card 2: Geometry + Reset -->
   <div class="ctrl-card">
-    <h3>几何参数</h3>
-    <div class="ctrl-row"><label>y₀ 值</label><input type="range" id="y0val" min="0.1" max="2.5" step="0.01" value="1.0"><span class="val" id="y0-val">1.00</span></div>
-    <div style="font-size:11px;color:var(--text-hint);margin-bottom:10px;line-height:1.5">截面随 y₀ 在锥上滑动</div>
+    <h3 id="card2-h3">几何参数</h3>
+    <div class="ctrl-row"><label>y₀</label><input type="range" id="y0val" min="0.1" max="2.5" step="0.01" value="1.0"><span class="val" id="y0-val">1.00</span></div>
+    <div id="y0-hint" style="font-size:11px;color:var(--text-hint);margin-bottom:10px;line-height:1.5"></div>
     <div class="btn-row"><button class="ctrl-btn" id="reset-btn">↺ 重置视角</button></div>
-    <div style="font-size:11px;color:var(--text-hdr);margin-top:4px;margin-bottom:5px;">重置目标：</div>
-    <div class="ctrl-row"><label>仰角</label><input type="number" id="r-elev" value="28" min="5" max="85"><span style="font-size:11px;color:var(--text-hint)">°</span></div>
-    <div class="ctrl-row"><label>方位角</label><input type="number" id="r-azim" value="210" min="0" max="360"><span style="font-size:11px;color:var(--text-hint)">°</span></div>
-    <div class="ctrl-row"><label>缩放</label><input type="number" id="r-zoom" value="7" min="3" max="14" step="0.5"></div>
+    <div class="reset-hint" id="reset-hint"></div>
+    <div class="ctrl-row"><label id="lbl-r-elev">仰角</label><input type="number" id="r-elev" value="28" min="5" max="85"><span style="font-size:11px;color:var(--text-hint)">°</span></div>
+    <div class="ctrl-row"><label id="lbl-r-azim">方位角</label><input type="number" id="r-azim" value="210" min="0" max="360"><span style="font-size:11px;color:var(--text-hint)">°</span></div>
+    <div class="ctrl-row"><label id="lbl-r-zoom">缩放</label><input type="number" id="r-zoom" value="7" min="3" max="14" step="0.5"></div>
   </div>
   <!-- Card 3: Visibility -->
   <div class="ctrl-card">
-    <h3>显示控制</h3>
-    <label class="chk-row"><input type="checkbox" id="show-plane1" checked><span style="color:#3b82f6">y₀=<span id="lbl-y0">1.00</span> 超平面（蓝）</span></label>
-    <label class="chk-row"><input type="checkbox" id="show-plane0" checked><span style="color:#8b5cf6">y₀=0 超平面（紫）</span></label>
-    <label class="chk-row"><input type="checkbox" id="show-cone" checked><span>锥面</span></label>
-    <label class="chk-row"><input type="checkbox" id="show-section" checked><span>截面几何（橙色）</span></label>
-    <label class="chk-row"><input type="checkbox" id="show-labels" checked><span>坐标轴标注</span></label>
-    <label class="chk-row"><input type="checkbox" id="show-ptlabels" checked><span>点坐标标注</span></label>
+    <h3 id="card3-h3">显示控制</h3>
+    <label class="chk-row"><input type="checkbox" id="show-plane1" checked><span style="color:#3b82f6" id="chk-plane1">y₀=<span id="lbl-y0">1.00</span> 超平面（蓝）</span></label>
+    <label class="chk-row"><input type="checkbox" id="show-plane0" checked><span style="color:#8b5cf6" id="chk-plane0">y₀=0 超平面（紫）</span></label>
+    <label class="chk-row"><input type="checkbox" id="show-cone" checked><span id="chk-cone">锥面</span></label>
+    <label class="chk-row"><input type="checkbox" id="show-section" checked><span id="chk-section">截面几何（橙色）</span></label>
+    <label class="chk-row"><input type="checkbox" id="show-labels" checked><span id="chk-labels">坐标轴标注</span></label>
+    <label class="chk-row"><input type="checkbox" id="show-ptlabels" checked><span id="chk-ptlabels">点坐标标注</span></label>
   </div>
 </div>
 
 <div id="legend">
-  <div class="leg"><div class="leg-dot" style="background:#f97316"></div>射线 / 截面几何（橙）</div>
-  <div class="leg"><div class="leg-dot" style="background:rgba(249,115,22,0.25);border:1px solid #f97316"></div>锥面（半透明橙）</div>
-  <div class="leg"><div class="leg-dot" style="background:rgba(59,130,246,0.5);border:1px solid #3b82f6"></div>y₀=const 超平面（蓝）</div>
-  <div class="leg"><div class="leg-dot" style="background:rgba(139,92,246,0.4);border:1px solid #8b5cf6"></div>y₀=0 平面（紫）</div>
+  <div class="leg"><div class="leg-dot" style="background:#f97316"></div><span id="leg1">射线 / 截面几何（橙）</span></div>
+  <div class="leg"><div class="leg-dot" style="background:rgba(249,115,22,0.25);border:1px solid #f97316"></div><span id="leg2">锥面（半透明橙）</span></div>
+  <div class="leg"><div class="leg-dot" style="background:rgba(59,130,246,0.5);border:1px solid #3b82f6"></div><span id="leg3">y₀=const 超平面（蓝）</span></div>
+  <div class="leg"><div class="leg-dot" style="background:rgba(139,92,246,0.4);border:1px solid #8b5cf6"></div><span id="leg4">y₀=0 平面（紫）</span></div>
 </div>
 
-<div id="formula">
-  <span class="hi">点集模式</span>：每个点 <span class="math">(x₁,x₂) ∈ 𝒻</span> 映射为射线 <span class="math">λ·(1,x₁,x₂)</span>，锥 = 有限射线族。
-  &nbsp;|&nbsp;
-  <span class="hi">区域模式</span>：𝒻 = 不等式刻画的区域，用点云采样射线，截面 y₀=<span class="hi" id="f-y0">1.00</span> 上显示区域投影。
-</div>
-<p class="tip">拖动旋转 &nbsp;·&nbsp; 滚轮缩放 &nbsp;·&nbsp; 调节 y₀ 观察截面 &nbsp;·&nbsp; 右上角切换配色</p>
+<div id="formula"></div>
+<p class="tip" id="tip"></p>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
 <script>
 /* ════════════════════════════════════════════
+   I18N — all UI strings in one place
+════════════════════════════════════════════ */
+const T = {
+  zh: {
+    title:        'Perspective Cone &nbsp;—&nbsp; <span style="color:#f97316">N = 2</span>',
+    subtitle:     '将 ℝ² 中的几何 𝒻 嵌入 ℝ³，从原点透视扫描形成锥体',
+    themeLabel:   { dark:'🌙 暗色', light:'☀️ 亮色' },
+    tabPts:       '📍 点集模式（手动输入顶点）',
+    tabIneq:      '📐 区域模式（不等式刻画 𝒻）',
+    ptsH3:        '𝒻 的点坐标（每行一个点）',
+    addPt:        '＋ 添加点',
+    applyBtn:     '▶ 更新几何',
+    ineqH3:       '用不等式刻画 𝒻 ⊂ ℝ²（变量：x1, x2）',
+    addIneq:      '＋ 添加不等式',
+    ineqHint:     '支持：<code>x1 + x2 &lt;= 1</code>，<code>x1 &gt;= 0</code>，<code>x1^2 + x2^2 &lt;= 1</code> 等<br>运算符：<code>+  -  *  /  ^  ()</code>，比较：<code>&lt;=  &gt;=  &lt;  &gt;  =</code>',
+    ineqPlaceholder: '例：x1 + x2 <= 1',
+    card1:        '视角',
+    lblElev:      '仰角', lblAzim: '方位角', lblZoom: '缩放',
+    animPlay:     '▶ 自动旋转', animPause: '⏸ 暂停',
+    card2:        '几何参数',
+    y0Hint:       '截面随 y₀ 在锥上滑动',
+    resetBtn:     '↺ 重置视角',
+    resetHint:    '重置目标值：',
+    card3:        '显示控制',
+    chkPlane1:    'y₀=<span id="lbl-y0">1.00</span> 超平面（蓝）',
+    chkPlane0:    'y₀=0 超平面（紫）',
+    chkCone:      '锥面',
+    chkSection:   '截面几何（橙色）',
+    chkLabels:    '坐标轴标注',
+    chkPtLabels:  '点坐标标注',
+    leg1: '射线 / 截面几何（橙）',
+    leg2: '锥面（半透明橙）',
+    leg3: 'y₀=const 超平面（蓝）',
+    leg4: 'y₀=0 平面（紫）',
+    formula: (y0) => `<span class="hi">点集模式</span>：每个点 <span class="math">(x₁,x₂) ∈ 𝒻</span> 映射为射线 <span class="math">λ·(1,x₁,x₂)</span>，锥 = 有限射线族。
+      &nbsp;|&nbsp;
+      <span class="hi">区域模式</span>：𝒻 = 不等式刻画的区域，用点云采样，截面 y₀=<span class="hi">${y0}</span> 上显示区域投影。`,
+    tip:    '拖动旋转 · 滚轮缩放 · 调节 y₀ 观察截面 · 右上角切换语言/配色',
+    errNoPts:   '请至少添加一个点',
+    errBadCoord:'坐标值无效，请检查输入',
+    okPts:      (n) => `✓ 已渲染 ${n} 个点的透视锥`,
+    errNoIneq:  '请至少添加一个不等式',
+    errParse:   (s,m) => `解析错误："${s}" — ${m}`,
+    errEmpty:   '没有有效的不等式',
+    warnEmpty:  '警告：区域为空，请检查不等式（采样范围 x1,x2 ∈ [-0.2, 2.2]）',
+    okIneq:     (n) => `✓ 已采样 ${n} 个点，渲染透视锥点云`,
+  },
+  en: {
+    title:        'Perspective Cone &nbsp;—&nbsp; <span style="color:#f97316">N = 2</span>',
+    subtitle:     'Embed geometry 𝒻 ⊂ ℝ² into ℝ³ and project from the origin',
+    themeLabel:   { dark:'🌙 Dark', light:'☀️ Light' },
+    tabPts:       '📍 Point Set Mode (enter vertices)',
+    tabIneq:      '📐 Region Mode (define 𝒻 by inequalities)',
+    ptsH3:        'Coordinates of 𝒻 (one point per row)',
+    addPt:        '＋ Add Point',
+    applyBtn:     '▶ Update Geometry',
+    ineqH3:       'Define 𝒻 ⊂ ℝ² by inequalities (variables: x1, x2)',
+    addIneq:      '＋ Add Inequality',
+    ineqHint:     'Supports: <code>x1 + x2 &lt;= 1</code>, <code>x1 &gt;= 0</code>, <code>x1^2 + x2^2 &lt;= 1</code>, etc.<br>Operators: <code>+  -  *  /  ^  ()</code>, comparisons: <code>&lt;=  &gt;=  &lt;  &gt;  =</code>',
+    ineqPlaceholder: 'e.g. x1 + x2 <= 1',
+    card1:        'Camera',
+    lblElev:      'Elevation', lblAzim: 'Azimuth', lblZoom: 'Zoom',
+    animPlay:     '▶ Auto-rotate', animPause: '⏸ Pause',
+    card2:        'Geometry',
+    y0Hint:       'Slide cross-section along the cone by adjusting y₀',
+    resetBtn:     '↺ Reset View',
+    resetHint:    'Reset target:',
+    card3:        'Visibility',
+    chkPlane1:    'y₀=<span id="lbl-y0">1.00</span> hyperplane (blue)',
+    chkPlane0:    'y₀=0 hyperplane (purple)',
+    chkCone:      'Cone surface',
+    chkSection:   'Cross-section geometry (orange)',
+    chkLabels:    'Axis labels',
+    chkPtLabels:  'Point labels',
+    leg1: 'Rays / cross-section (orange)',
+    leg2: 'Cone surface (translucent orange)',
+    leg3: 'y₀=const hyperplane (blue)',
+    leg4: 'y₀=0 plane (purple)',
+    formula: (y0) => `<span class="hi">Point Set Mode</span>: each point <span class="math">(x₁,x₂) ∈ 𝒻</span> maps to a ray <span class="math">λ·(1,x₁,x₂)</span>; cone = finite ray family.
+      &nbsp;|&nbsp;
+      <span class="hi">Region Mode</span>: 𝒻 = region defined by inequalities, sampled as point cloud; cross-section at y₀=<span class="hi">${y0}</span> shown on blue plane.`,
+    tip:    'Drag to rotate · Scroll to zoom · Adjust y₀ to slide cross-section · Toggle language/theme top-right',
+    errNoPts:   'Please add at least one point',
+    errBadCoord:'Invalid coordinates — please check your input',
+    okPts:      (n) => `✓ Rendered perspective cone for ${n} point${n>1?'s':''}`,
+    errNoIneq:  'Please add at least one inequality',
+    errParse:   (s,m) => `Parse error: "${s}" — ${m}`,
+    errEmpty:   'No valid inequalities found',
+    warnEmpty:  'Warning: region is empty — check inequalities (sampling range x1,x2 ∈ [-0.2, 2.2])',
+    okIneq:     (n) => `✓ Sampled ${n} points — rendering perspective cone point cloud`,
+  }
+};
+
+let lang = 'zh';
+let isDark = true;
+
+function setLang(l) {
+  lang = l;
+  document.getElementById('lang-zh').classList.toggle('active', l==='zh');
+  document.getElementById('lang-en').classList.toggle('active', l==='en');
+  document.documentElement.lang = l;
+  applyLang();
+}
+
+function applyLang() {
+  const t = T[lang];
+  document.getElementById('title').innerHTML    = t.title;
+  document.getElementById('subtitle').textContent = t.subtitle;
+  document.getElementById('theme-label').textContent = isDark ? t.themeLabel.dark : t.themeLabel.light;
+  document.getElementById('tab-pts').textContent  = t.tabPts;
+  document.getElementById('tab-ineq').textContent = t.tabIneq;
+  document.getElementById('pts-h3').textContent   = t.ptsH3;
+  document.getElementById('add-pt-btn').textContent = t.addPt;
+  document.getElementById('apply-btn').textContent  = t.applyBtn;
+  document.getElementById('ineq-h3').textContent  = t.ineqH3;
+  document.getElementById('add-ineq-btn').textContent = t.addIneq;
+  document.getElementById('ineq-hint').innerHTML  = t.ineqHint;
+  document.getElementById('apply-btn2').textContent = t.applyBtn;
+  document.getElementById('card1-h3').textContent = t.card1;
+  document.getElementById('lbl-elev').textContent = t.lblElev;
+  document.getElementById('lbl-azim').textContent = t.lblAzim;
+  document.getElementById('lbl-zoom').textContent = t.lblZoom;
+  document.getElementById('card2-h3').textContent = t.card2;
+  document.getElementById('y0-hint').textContent  = t.y0Hint;
+  document.getElementById('reset-btn').textContent = t.resetBtn;
+  document.getElementById('reset-hint').textContent = t.resetHint;
+  document.getElementById('lbl-r-elev').textContent = t.lblElev;
+  document.getElementById('lbl-r-azim').textContent = t.lblAzim;
+  document.getElementById('lbl-r-zoom').textContent = t.lblZoom;
+  document.getElementById('card3-h3').textContent = t.card3;
+  document.getElementById('chk-plane1').innerHTML = t.chkPlane1.replace('lbl-y0','lbl-y0');
+  document.getElementById('chk-plane0').textContent = t.chkPlane0;
+  document.getElementById('chk-cone').textContent   = t.chkCone;
+  document.getElementById('chk-section').textContent= t.chkSection;
+  document.getElementById('chk-labels').textContent = t.chkLabels;
+  document.getElementById('chk-ptlabels').textContent= t.chkPtLabels;
+  document.getElementById('leg1').textContent = t.leg1;
+  document.getElementById('leg2').textContent = t.leg2;
+  document.getElementById('leg3').textContent = t.leg3;
+  document.getElementById('leg4').textContent = t.leg4;
+  document.getElementById('formula').innerHTML = t.formula(y0val.toFixed(2));
+  document.getElementById('tip').textContent   = t.tip;
+  // anim button
+  const ab = document.getElementById('anim-btn');
+  ab.textContent = animating ? t.animPause : t.animPlay;
+  // ineq placeholder
+  document.querySelectorAll('.ineq-row input[type=text]').forEach(inp => {
+    inp.placeholder = t.ineqPlaceholder;
+  });
+}
+
+/* ════════════════════════════════════════════
    THEME
 ════════════════════════════════════════════ */
-let isDark=true;
-document.getElementById('theme-toggle').addEventListener('click',()=>{
-  isDark=!isDark;
-  document.body.classList.toggle('dark',isDark);
-  document.body.classList.toggle('light',!isDark);
-  document.getElementById('theme-label').textContent=isDark?'🌙 Dark':'☀️ Light';
-  renderer.setClearColor(isDark?0x0a0e1a:0xffffff,1);
-  negAxes.forEach(l=>l.material.color.setHex(isDark?0x444455:0xaaaacc));
-  originDot.material.color.setHex(isDark?0xffffff:0x333333);
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  isDark = !isDark;
+  document.body.classList.toggle('dark',  isDark);
+  document.body.classList.toggle('light', !isDark);
+  document.getElementById('theme-label').textContent = isDark ? T[lang].themeLabel.dark : T[lang].themeLabel.light;
+  renderer.setClearColor(isDark ? 0x0a0e1a : 0xffffff, 1);
+  negAxes.forEach(l => l.material.color.setHex(isDark ? 0x444455 : 0xaaaacc));
+  originDot.material.color.setHex(isDark ? 0xffffff : 0x333333);
   updateAllLabelColors();
 });
 
 /* ════════════════════════════════════════════
    RENDERER / SCENE / CAM
 ════════════════════════════════════════════ */
-const canvas=document.getElementById('pc');
-const wrap=document.getElementById('pc-wrap');
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true});
-renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-renderer.setClearColor(0x0a0e1a,1);
-const scene=new THREE.Scene();
-const cam=new THREE.PerspectiveCamera(45,1,0.01,200);
-let elev=28,azim=210,radius=7,animating=false,y0val=1.0;
+const canvas   = document.getElementById('pc');
+const wrap     = document.getElementById('pc-wrap');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x0a0e1a, 1);
+const scene = new THREE.Scene();
+const cam   = new THREE.PerspectiveCamera(45, 1, 0.01, 200);
+let elev=28, azim=210, radius=7, animating=false, y0val=1.0;
 
-function camPos(){
-  const e=elev*Math.PI/180,a=azim*Math.PI/180;
-  return new THREE.Vector3(radius*Math.cos(e)*Math.sin(a),radius*Math.sin(e),radius*Math.cos(e)*Math.cos(a));
+function camPos() {
+  const e=elev*Math.PI/180, a=azim*Math.PI/180;
+  return new THREE.Vector3(radius*Math.cos(e)*Math.sin(a), radius*Math.sin(e), radius*Math.cos(e)*Math.cos(a));
 }
-function updateCam(){cam.position.copy(camPos());cam.lookAt(0,1,0);}
+function updateCam() { cam.position.copy(camPos()); cam.lookAt(0,1,0); }
 
 /* ════════════════════════════════════════════
    HELPERS
 ════════════════════════════════════════════ */
-function makeLine(pts,col,dashed=false,opacity=1){
-  const mat=dashed
-    ?new THREE.LineDashedMaterial({color:col,dashSize:.12,gapSize:.08,transparent:opacity<1,opacity})
-    :new THREE.LineBasicMaterial({color:col,linewidth:2,transparent:opacity<1,opacity});
-  const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),mat);
-  if(dashed)l.computeLineDistances();
+function makeLine(pts, col, dashed=false, opacity=1) {
+  const mat = dashed
+    ? new THREE.LineDashedMaterial({color:col, dashSize:.12, gapSize:.08, transparent:opacity<1, opacity})
+    : new THREE.LineBasicMaterial({color:col, linewidth:2, transparent:opacity<1, opacity});
+  const l = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), mat);
+  if(dashed) l.computeLineDistances();
   return l;
 }
-
-function makeSprite(text,pos,col,size=0.55){
-  const c2=document.createElement('canvas');c2.width=240;c2.height=96;
+function makeSprite(text, pos, col, size=0.55) {
+  const c2=document.createElement('canvas'); c2.width=240; c2.height=96;
   const ctx=c2.getContext('2d');
-  ctx.font='bold 40px serif';ctx.fillStyle=col;
-  ctx.textAlign='center';ctx.textBaseline='middle';
-  ctx.fillText(text,120,48);
-  const spr=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c2),transparent:true}));
-  spr.position.copy(pos);spr.scale.set(size,size*.4,1);
+  ctx.font='bold 40px serif'; ctx.fillStyle=col;
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(text, 120, 48);
+  const spr=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c2), transparent:true}));
+  spr.position.copy(pos); spr.scale.set(size, size*.4, 1);
   return spr;
 }
-function rebuildSprite(spr,text,col,size){
-  const c2=document.createElement('canvas');c2.width=280;c2.height=96;
+function rebuildSprite(spr, text, col, size) {
+  const c2=document.createElement('canvas'); c2.width=280; c2.height=96;
   const ctx=c2.getContext('2d');
-  ctx.font='bold 40px serif';ctx.fillStyle=col;
-  ctx.textAlign='center';ctx.textBaseline='middle';
-  ctx.fillText(text,140,48);
-  if(spr.material.map)spr.material.map.dispose();
+  ctx.font='bold 40px serif'; ctx.fillStyle=col;
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(text, 140, 48);
+  if(spr.material.map) spr.material.map.dispose();
   spr.material.map=new THREE.CanvasTexture(c2);
   spr.material.needsUpdate=true;
-  if(size)spr.scale.set(size,size*.4,1);
+  if(size) spr.scale.set(size, size*.4, 1);
 }
 
 /* ════════════════════════════════════════════
-   STATIC SCENE: axes, planes, origin
+   STATIC SCENE
 ════════════════════════════════════════════ */
 const axisLines=[
   makeLine([new THREE.Vector3(0,0,0),new THREE.Vector3(2.8,0,0)],0xef4444),
@@ -353,7 +488,7 @@ const labelGroup=new THREE.Group();
 let lY1=makeSprite('y₁',new THREE.Vector3(3.1,0,0),'#ef4444');
 let lY0=makeSprite('y₀',new THREE.Vector3(0,3.45,0),'#22c55e');
 let lY2=makeSprite('y₂',new THREE.Vector3(0,0,3.1),'#3b82f6');
-let lO=makeSprite('O',new THREE.Vector3(-.32,-.25,-.12),'#94a3b8',.44);
+let lO =makeSprite('O', new THREE.Vector3(-.32,-.25,-.12),'#94a3b8',.44);
 [lY1,lY0,lY2,lO].forEach(s=>labelGroup.add(s));
 scene.add(labelGroup);
 
@@ -367,11 +502,11 @@ function updateAllLabelColors(){
   ptLblSprites.forEach(s=>{if(s._text)rebuildSprite(s,s._text,'#f97316',.52);});
 }
 
-/* y₀=0 plane (purple, fixed) */
-const plane0Group=new THREE.Group();scene.add(plane0Group);
+/* y₀=0 plane */
+const plane0Group=new THREE.Group(); scene.add(plane0Group);
 const p0mesh=new THREE.Mesh(new THREE.PlaneGeometry(5.5,5.5),
   new THREE.MeshBasicMaterial({color:0x4c1d95,side:THREE.DoubleSide,transparent:true,opacity:.13}));
-p0mesh.rotation.x=Math.PI/2;plane0Group.add(p0mesh);
+p0mesh.rotation.x=Math.PI/2; plane0Group.add(p0mesh);
 plane0Group.add(makeLine([new THREE.Vector3(-2.75,0,-2.75),new THREE.Vector3(2.75,0,-2.75),
   new THREE.Vector3(2.75,0,2.75),new THREE.Vector3(-2.75,0,2.75),new THREE.Vector3(-2.75,0,-2.75)],0x8b5cf6));
 for(let i=-2;i<=2;i++){if(!i)continue;
@@ -379,7 +514,7 @@ for(let i=-2;i<=2;i++){if(!i)continue;
   [[new THREE.Vector3(-2.75,0,i),new THREE.Vector3(2.75,0,i)],
    [new THREE.Vector3(i,0,-2.75),new THREE.Vector3(i,0,2.75)]].forEach(pts=>{
     const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),dm);
-    l.computeLineDistances();plane0Group.add(l);
+    l.computeLineDistances(); plane0Group.add(l);
   });
 }
 let plane0Label=makeSprite('y₀=0',new THREE.Vector3(2.4,.18,0),'#8b5cf6',.65);
@@ -388,7 +523,7 @@ scene.add(plane0Label);
 /* y₀=const plane (blue, moves) */
 const plane1Mesh=new THREE.Mesh(new THREE.PlaneGeometry(5,5),
   new THREE.MeshBasicMaterial({color:0x1e4a8a,side:THREE.DoubleSide,transparent:true,opacity:.16}));
-plane1Mesh.rotation.x=Math.PI/2;scene.add(plane1Mesh);
+plane1Mesh.rotation.x=Math.PI/2; scene.add(plane1Mesh);
 const plane1Border=makeLine([new THREE.Vector3(-2.5,0,-2.5),new THREE.Vector3(2.5,0,-2.5),
   new THREE.Vector3(2.5,0,2.5),new THREE.Vector3(-2.5,0,2.5),new THREE.Vector3(-2.5,0,-2.5)],0x3b82f6);
 scene.add(plane1Border);
@@ -398,14 +533,15 @@ for(let i=-2;i<=2;i++){if(!i)continue;
   [[new THREE.Vector3(-2.5,0,i),new THREE.Vector3(2.5,0,i)],
    [new THREE.Vector3(i,0,-2.5),new THREE.Vector3(i,0,2.5)]].forEach(pts=>{
     const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),dm);
-    l.computeLineDistances();scene.add(l);plane1Grid.push(l);
+    l.computeLineDistances(); scene.add(l); plane1Grid.push(l);
   });
 }
 let plane1Label=makeSprite('y₀=1.00',new THREE.Vector3(2.4,1.18,0),'#3b82f6',.72);
 scene.add(plane1Label);
 const plane1Parts=[plane1Mesh,plane1Border,...plane1Grid];
+
 function setPlane1Y(v){
-  plane1Mesh.position.y=v;plane1Border.position.y=v;
+  plane1Mesh.position.y=v; plane1Border.position.y=v;
   plane1Grid.forEach(l=>l.position.y=v);
   plane1Label.position.set(2.4,v+.18,0);
 }
@@ -416,33 +552,27 @@ scene.add(originDot);
 scene.add(new THREE.AmbientLight(0xffffff,1));
 
 /* ════════════════════════════════════════════
-   DYNAMIC GEOMETRY (cone, section, dots, labels)
-   These groups are cleared and rebuilt on applyF()
+   DYNAMIC GEOMETRY
 ════════════════════════════════════════════ */
-const rayGroup   =new THREE.Group();scene.add(rayGroup);
-const coneGroup  =new THREE.Group();scene.add(coneGroup);
+const rayGroup   =new THREE.Group(); scene.add(rayGroup);
+const coneGroup  =new THREE.Group(); scene.add(coneGroup);
 const sectionGroup=new THREE.Group();scene.add(sectionGroup);
-const ptLblGroup =new THREE.Group();scene.add(ptLblGroup);
+const ptLblGroup =new THREE.Group(); scene.add(ptLblGroup);
 let ptLblSprites=[];
-
 const RAY_EXT=3.2;
 
 function clearDynamic(){
   [rayGroup,coneGroup,sectionGroup,ptLblGroup].forEach(g=>{
-    while(g.children.length)g.remove(g.children[0]);
+    while(g.children.length) g.remove(g.children[0]);
   });
   ptLblSprites=[];
 }
 
-/* ── Points mode geometry ── */
 function buildFromPoints(pts){
-  // pts: [{x1,x2}, ...]
-  const dirs=pts.map(p=>new THREE.Vector3(p.x1,1,p.x2)); // direction = (x1,1,x2)
-  // rays
+  const dirs=pts.map(p=>new THREE.Vector3(p.x1,1,p.x2));
   dirs.forEach(d=>{
     rayGroup.add(makeLine([new THREE.Vector3(0,0,0),d.clone().multiplyScalar(RAY_EXT)],0xf97316));
   });
-  // cone faces: if ≥3 pts, connect convex hull triangles; if 2 pts, one face; if 1, nothing
   if(dirs.length>=2){
     const hull=convexHullOrder(pts);
     for(let i=0;i<hull.length;i++){
@@ -456,55 +586,49 @@ function buildFromPoints(pts){
         new THREE.MeshBasicMaterial({color:0xf97316,side:THREE.DoubleSide,transparent:true,opacity:.1})));
     }
   }
-  // dots + labels at current y0
   updatePtSection(dirs,y0val,pts.map(p=>`(${p.x1},${p.x2})`));
 }
 
-/* update the dot + label positions for pts mode */
 function updatePtSection(dirs,v,labels){
-  while(sectionGroup.children.length)sectionGroup.remove(sectionGroup.children[0]);
+  while(sectionGroup.children.length) sectionGroup.remove(sectionGroup.children[0]);
   ptLblSprites=[];
   const offsets=[new THREE.Vector3(-.32,.22,-.22),new THREE.Vector3(.32,.22,-.22),
-                 new THREE.Vector3(-.32,.22,.26),new THREE.Vector3(.32,.22,.26),
-                 new THREE.Vector3(0,.28,-.28),new THREE.Vector3(0,.28,.28)];
+                 new THREE.Vector3(-.32,.22,.26), new THREE.Vector3(.32,.22,.26),
+                 new THREE.Vector3(0,.28,-.28),   new THREE.Vector3(0,.28,.28)];
   dirs.forEach((d,i)=>{
     const pos=d.clone().multiplyScalar(v);
     const dot=new THREE.Mesh(new THREE.SphereGeometry(.085,16,16),
       new THREE.MeshBasicMaterial({color:0xf97316}));
-    dot.position.copy(pos);sectionGroup.add(dot);
+    dot.position.copy(pos); sectionGroup.add(dot);
     if(labels&&labels[i]){
       const off=offsets[i%offsets.length];
       const spr=makeSprite(labels[i],pos.clone().add(off),'#f97316',.52);
       spr._text=labels[i];
-      ptLblGroup.add(spr);ptLblSprites.push(spr);
+      ptLblGroup.add(spr); ptLblSprites.push(spr);
     }
   });
 }
 
-/* store current dirs for y0 animation */
 let currentDirs=[];
-let currentMode='pts'; // 'pts' or 'ineq'
-let currentIneqFns=[];  // compiled inequality functions
-let currentIneqSamples=[]; // [{x1,x2}] satisfying ineqs
+let currentMode='pts';
+let currentIneqFns=[];
+let currentIneqSamples=[];
 
-/* ── Region mode geometry ── */
-const SAMPLE_N=60; // grid resolution
-const CLOUD_N=3000; // point cloud count for cone
+const SAMPLE_N=60, CLOUD_N=3000;
+
 function buildFromIneqs(fns){
   currentIneqFns=fns;
-  // sample grid on [-0.5,2.5]^2
   const valid=[];
   const lo=-0.2,hi=2.2,step=(hi-lo)/SAMPLE_N;
   for(let i=0;i<=SAMPLE_N;i++){
     for(let j=0;j<=SAMPLE_N;j++){
       const x1=lo+i*step,x2=lo+j*step;
-      if(fns.every(f=>f(x1,x2)))valid.push({x1,x2});
+      if(fns.every(f=>f(x1,x2))) valid.push({x1,x2});
     }
   }
   currentIneqSamples=valid;
-  if(valid.length===0)return;
+  if(valid.length===0) return;
 
-  // point cloud for cone (random rays through sampled F points)
   const cloudPts=[];
   for(let k=0;k<CLOUD_N;k++){
     const s=valid[Math.floor(Math.random()*valid.length)];
@@ -520,61 +644,47 @@ function buildFromIneqs(fns){
   coneGroup.add(new THREE.Points(cloudGeo,
     new THREE.PointsMaterial({color:0xf97316,size:.04,transparent:true,opacity:.55})));
 
-  // a few bounding rays for visual anchoring
   const extremes=findExtremePoints(valid,6);
   currentDirs=extremes.map(p=>new THREE.Vector3(p.x1,1,p.x2));
   extremes.forEach(p=>{
     const dir=new THREE.Vector3(p.x1,1,p.x2);
     rayGroup.add(makeLine([new THREE.Vector3(0,0,0),dir.clone().multiplyScalar(RAY_EXT)],0xf97316,.5,.7));
   });
-
-  // section dots at y0
   updateIneqSection(y0val);
 }
 
 function updateIneqSection(v){
-  while(sectionGroup.children.length)sectionGroup.remove(sectionGroup.children[0]);
-  if(currentIneqSamples.length===0)return;
+  while(sectionGroup.children.length) sectionGroup.remove(sectionGroup.children[0]);
+  if(currentIneqSamples.length===0) return;
   const pts=[];
-  currentIneqSamples.forEach(s=>{
-    pts.push(s.x1*v,v,s.x2*v); // scale by y0=v along ray (1,x1,x2)*v
-  });
+  currentIneqSamples.forEach(s=>{ pts.push(s.x1*v,v,s.x2*v); });
   const geo=new THREE.BufferGeometry();
   geo.setAttribute('position',new THREE.BufferAttribute(new Float32Array(pts),3));
   sectionGroup.add(new THREE.Points(geo,
     new THREE.PointsMaterial({color:0xf97316,size:.055,transparent:true,opacity:.85})));
 }
 
-/* find ~n extreme-ish points in valid set for visual rays */
 function findExtremePoints(valid,n){
-  if(valid.length<=n)return valid;
-  const angles=[];
-  for(let i=0;i<n;i++)angles.push(i*2*Math.PI/n);
-  return angles.map(a=>{
-    const dx=Math.cos(a),dz=Math.sin(a);
+  if(valid.length<=n) return valid;
+  return Array.from({length:n},(_,i)=>{
+    const a=i*2*Math.PI/n, dx=Math.cos(a), dz=Math.sin(a);
     let best=valid[0],bv=-Infinity;
-    valid.forEach(p=>{const v=p.x1*dx+p.x2*dz;if(v>bv){bv=v;best=p;}});
+    valid.forEach(p=>{const v=p.x1*dx+p.x2*dz; if(v>bv){bv=v;best=p;}});
     return best;
   });
 }
 
-/* ── Convex hull ordering (Graham scan on 2D pts) ── */
 function convexHullOrder(pts){
-  if(pts.length<=2)return pts.map((_,i)=>i);
+  if(pts.length<=2) return pts.map((_,i)=>i);
   const ps=pts.map((p,i)=>({x:p.x1,y:p.x2,i}));
   ps.sort((a,b)=>a.y-b.y||a.x-b.x);
   const pivot=ps[0];
-  ps.sort((a,b)=>{
-    const aa=Math.atan2(a.y-pivot.y,a.x-pivot.x);
-    const ab=Math.atan2(b.y-pivot.y,b.x-pivot.x);
-    return aa-ab;
-  });
+  ps.sort((a,b)=>Math.atan2(a.y-pivot.y,a.x-pivot.x)-Math.atan2(b.y-pivot.y,b.x-pivot.x));
   const hull=[];
   for(const p of ps){
     while(hull.length>=2){
       const a=hull[hull.length-2],b=hull[hull.length-1];
-      const cross=(b.x-a.x)*(p.y-a.y)-(b.y-a.y)*(p.x-a.x);
-      if(cross<=0)hull.pop(); else break;
+      if((b.x-a.x)*(p.y-a.y)-(b.y-a.y)*(p.x-a.x)<=0) hull.pop(); else break;
     }
     hull.push(p);
   }
@@ -590,12 +700,11 @@ function updateY0(v){
   rebuildSprite(plane1Label,'y₀='+v.toFixed(2),'#3b82f6',.72);
   plane1Label.position.set(2.4,v+.18,0);
   document.getElementById('lbl-y0').textContent=v.toFixed(2);
-  document.getElementById('f-y0').textContent=v.toFixed(2);
+  document.getElementById('formula').innerHTML=T[lang].formula(v.toFixed(2));
   if(currentMode==='pts'&&currentDirs.length>0){
-    // re-draw section dots
     const labels=ptLblSprites.map(s=>s._text||'');
     updatePtSection(currentDirs,v,labels);
-  }else if(currentMode==='ineq'){
+  } else if(currentMode==='ineq'){
     updateIneqSection(v);
   }
 }
@@ -604,34 +713,29 @@ function updateY0(v){
    INEQUALITY PARSER
 ════════════════════════════════════════════ */
 function parseIneq(str){
-  // returns fn(x1,x2)->bool or throws
   str=str.trim();
-  // detect operator
-  const ops=[['<=','le'],['>=','ge'],['<','lt'],['>','gt'],['=','eq'],['==','eq']];
+  const ops=[['<=','le'],['>=','ge'],['<','lt'],['>','gt'],['==','eq'],['=','eq']];
   let op=null,lhsStr,rhsStr;
   for(const [sym,name] of ops){
-    // avoid matching <= when looking for <
     const idx=str.indexOf(sym);
     if(idx>=0){op=name;lhsStr=str.slice(0,idx).trim();rhsStr=str.slice(idx+sym.length).trim();break;}
   }
-  if(!op)throw new Error('未找到比较符号');
-  // compile via mathjs
+  if(!op) throw new Error(lang==='zh'?'未找到比较符号':'no comparison operator found');
   const lhsExpr=math.compile(lhsStr);
   const rhsExpr=math.compile(rhsStr);
   const cmp={le:(a,b)=>a<=b,ge:(a,b)=>a>=b,lt:(a,b)=>a<b,gt:(a,b)=>a>b,eq:(a,b)=>Math.abs(a-b)<1e-9};
   const fn=cmp[op];
   return (x1,x2)=>{
     const scope={x1,x2};
-    const l=lhsExpr.evaluate(scope);
-    const r=rhsExpr.evaluate(scope);
-    return fn(l,r);
+    return fn(lhsExpr.evaluate(scope), rhsExpr.evaluate(scope));
   };
 }
 
 /* ════════════════════════════════════════════
-   UI: MODE TABS + F INPUT
+   UI
 ════════════════════════════════════════════ */
 let currentUIMode='pts';
+
 function setMode(m){
   currentUIMode=m;
   document.getElementById('pts-mode').style.display=m==='pts'?'':'none';
@@ -641,102 +745,89 @@ function setMode(m){
   setStatus('','');
 }
 
-/* ── Points UI ── */
-let ptRows=[];
+function setStatus(msg,type){
+  // update both status divs
+  ['f-status','f-status2'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    el.textContent=msg; el.className=type?'f-status '+type:'';
+    el.style.display=msg?'block':'none';
+  });
+}
+
 function addPointRow(x1val='',x2val=''){
-  const div=document.createElement('div');div.className='pt-row';
-  const idx=ptRows.length+1;
+  const div=document.createElement('div'); div.className='pt-row';
+  const idx=document.getElementById('pts-area').children.length+1;
   div.innerHTML=`<span class="pt-lbl">P${idx}</span>
     x1=<input type="number" step="0.1" value="${x1val}" placeholder="0">
     x2=<input type="number" step="0.1" value="${x2val}" placeholder="0">
     <button class="rm-btn" onclick="removeRow(this)">✕</button>`;
   document.getElementById('pts-area').appendChild(div);
-  ptRows.push(div);
   renumberRows();
 }
 function removeRow(btn){
-  const row=btn.parentElement;row.remove();
-  ptRows=ptRows.filter(r=>r!==row);renumberRows();
+  btn.parentElement.remove(); renumberRows();
 }
 function renumberRows(){
-  ptRows=[...document.getElementById('pts-area').querySelectorAll('.pt-row')];
-  ptRows.forEach((r,i)=>{r.querySelector('.pt-lbl').textContent='P'+(i+1);});
+  [...document.getElementById('pts-area').querySelectorAll('.pt-row')]
+    .forEach((r,i)=>r.querySelector('.pt-lbl').textContent='P'+(i+1));
 }
 
-/* ── Inequalities UI ── */
-let ineqRows=[];
 function addIneqRow(val=''){
-  const div=document.createElement('div');div.className='ineq-row';
-  div.innerHTML=`<input type="text" value="${val}" placeholder="例：x1 + x2 <= 1">
+  const div=document.createElement('div'); div.className='ineq-row';
+  const ph=T[lang].ineqPlaceholder;
+  div.innerHTML=`<input type="text" value="${val}" placeholder="${ph}">
     <button class="rm-btn" onclick="removeIneqRow(this)">✕</button>`;
   document.getElementById('ineq-area').appendChild(div);
-  ineqRows.push(div);
 }
-function removeIneqRow(btn){
-  const row=btn.parentElement;row.remove();
-  ineqRows=ineqRows.filter(r=>r!==row);
-}
+function removeIneqRow(btn){ btn.parentElement.remove(); }
 
-function setStatus(msg,type){
-  const el=document.getElementById('f-status');
-  el.textContent=msg;el.className=type?'f-status '+type:'';
-  el.style.display=msg?'block':'none';
-}
-
-/* ── Apply button ── */
 function applyF(){
-  clearDynamic();
-  setStatus('','');
+  clearDynamic(); setStatus('','');
+  const t=T[lang];
   if(currentUIMode==='pts'){
     const rows=[...document.getElementById('pts-area').querySelectorAll('.pt-row')];
-    if(rows.length===0){setStatus('请至少添加一个点','err');return;}
+    if(rows.length===0){setStatus(t.errNoPts,'err');return;}
     const pts=[];
     for(const r of rows){
       const inputs=r.querySelectorAll('input[type=number]');
-      const x1=parseFloat(inputs[0].value);
-      const x2=parseFloat(inputs[1].value);
-      if(isNaN(x1)||isNaN(x2)){setStatus('坐标值无效，请检查输入','err');return;}
+      const x1=parseFloat(inputs[0].value), x2=parseFloat(inputs[1].value);
+      if(isNaN(x1)||isNaN(x2)){setStatus(t.errBadCoord,'err');return;}
       pts.push({x1,x2});
     }
     currentMode='pts';
     currentDirs=pts.map(p=>new THREE.Vector3(p.x1,1,p.x2));
     buildFromPoints(pts);
-    setStatus(`✓ 已渲染 ${pts.length} 个点的透视锥`,'ok');
+    setStatus(t.okPts(pts.length),'ok');
   } else {
     const rows=[...document.getElementById('ineq-area').querySelectorAll('.ineq-row')];
-    if(rows.length===0){setStatus('请至少添加一个不等式','err');return;}
+    if(rows.length===0){setStatus(t.errNoIneq,'err');return;}
     const fns=[];
     for(const r of rows){
       const txt=r.querySelector('input[type=text]').value.trim();
-      if(!txt)continue;
+      if(!txt) continue;
       try{fns.push(parseIneq(txt));}
-      catch(e){setStatus(`解析错误："${txt}" — ${e.message}`,'err');return;}
+      catch(e){setStatus(t.errParse(txt,e.message),'err');return;}
     }
-    if(fns.length===0){setStatus('没有有效的不等式','err');return;}
+    if(fns.length===0){setStatus(t.errEmpty,'err');return;}
     currentMode='ineq';
     buildFromIneqs(fns);
     if(currentIneqSamples.length===0){
-      setStatus('警告：区域为空，请检查不等式（采样范围 x1,x2 ∈ [-0.2, 2.2]）','err');
+      setStatus(t.warnEmpty,'err');
     } else {
-      setStatus(`✓ 已采样 ${currentIneqSamples.length} 个点，渲染透视锥点云`,'ok');
+      setStatus(t.okIneq(currentIneqSamples.length),'ok');
     }
   }
 }
 
-/* ── Default F: {(0,0),(1,0),(0,1),(1,1)} ── */
-function initDefault(){
-  addPointRow(0,0);addPointRow(1,0);addPointRow(0,1);addPointRow(1,1);
-  applyF();
-}
-
 /* ════════════════════════════════════════════
-   RESIZE / SYNC / EVENTS
+   RESIZE / EVENTS
 ════════════════════════════════════════════ */
 function resize(){
   const w=wrap.clientWidth,h=wrap.clientHeight;
-  renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();
+  renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix();
 }
-resize();window.addEventListener('resize',resize);
+resize(); window.addEventListener('resize',resize);
 
 function syncUI(){
   document.getElementById('elev').value=Math.round(elev);
@@ -760,13 +851,17 @@ document.getElementById('show-labels').addEventListener('change',e=>labelGroup.v
 document.getElementById('show-ptlabels').addEventListener('change',e=>ptLblGroup.visible=e.target.checked);
 
 const animBtn=document.getElementById('anim-btn');
-animBtn.addEventListener('click',()=>{animating=!animating;animBtn.textContent=animating?'⏸ 暂停':'▶ 自动旋转';animBtn.classList.toggle('active',animating);});
+animBtn.addEventListener('click',()=>{
+  animating=!animating;
+  animBtn.textContent=animating?T[lang].animPause:T[lang].animPlay;
+  animBtn.classList.toggle('active',animating);
+});
 
 document.getElementById('reset-btn').addEventListener('click',()=>{
   elev=Math.max(5,Math.min(85,parseFloat(document.getElementById('r-elev').value)||28));
   azim=((parseFloat(document.getElementById('r-azim').value)||210)%360+360)%360;
   radius=Math.max(3,Math.min(14,parseFloat(document.getElementById('r-zoom').value)||7));
-  syncUI();updateCam();
+  syncUI(); updateCam();
 });
 
 let drag=false,lx=0,ly=0;
@@ -776,7 +871,7 @@ window.addEventListener('mousemove',e=>{
   if(!drag)return;
   azim=(azim+(e.clientX-lx)*.45+360)%360;
   elev=Math.max(5,Math.min(85,elev-(e.clientY-ly)*.35));
-  lx=e.clientX;ly=e.clientY;syncUI();updateCam();
+  lx=e.clientX;ly=e.clientY; syncUI(); updateCam();
 });
 canvas.addEventListener('touchstart',e=>{drag=true;lx=e.touches[0].clientX;ly=e.touches[0].clientY;},{passive:true});
 canvas.addEventListener('touchend',()=>drag=false);
@@ -784,31 +879,32 @@ canvas.addEventListener('touchmove',e=>{
   if(!drag)return;
   azim=(azim+(e.touches[0].clientX-lx)*.45+360)%360;
   elev=Math.max(5,Math.min(85,elev-(e.touches[0].clientY-ly)*.35));
-  lx=e.touches[0].clientX;ly=e.touches[0].clientY;syncUI();updateCam();
+  lx=e.touches[0].clientX;ly=e.touches[0].clientY; syncUI(); updateCam();
 },{passive:true});
 canvas.addEventListener('wheel',e=>{
   radius=Math.max(3,Math.min(14,radius+e.deltaY*.01));
   document.getElementById('zoom').value=radius;
   document.getElementById('zoom-val').textContent=radius.toFixed(1);
-  updateCam();e.preventDefault();
+  updateCam(); e.preventDefault();
 },{passive:false});
 
 /* ════════════════════════════════════════════
-   RENDER LOOP + INIT
+   INIT
 ════════════════════════════════════════════ */
-updateY0(1.0);updateCam();
-(function render(){
-  requestAnimationFrame(render);
-  if(animating){azim=(azim+.22)%360;syncUI();updateCam();}
-  renderer.render(scene,cam);
-})();
-
-// add default ineq example rows (hidden, ready to use)
 addIneqRow('x1 >= 0');
 addIneqRow('x2 >= 0');
 addIneqRow('x1 + x2 <= 1');
+addPointRow(0,0); addPointRow(1,0); addPointRow(0,1); addPointRow(1,1);
 
-initDefault();
+updateY0(1.0); updateCam();
+applyLang();   // apply zh strings on load
+applyF();
+
+(function render(){
+  requestAnimationFrame(render);
+  if(animating){azim=(azim+.22)%360; syncUI(); updateCam();}
+  renderer.render(scene,cam);
+})();
 </script>
 </body>
 </html>
