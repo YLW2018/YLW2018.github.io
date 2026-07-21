@@ -6,7 +6,7 @@ permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
-redirect_to: /404.html
+# redirect_to: /404.html
 output: true
 ---
 
