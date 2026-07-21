@@ -8,7 +8,7 @@ redirect_from:
 output: true
 ---
 
-Hi, I am Yunlong Wang (王云龙). I received my Ph.D. from the **Antai College of Economics and Management** ([ACEM](https://www.acem.sjtu.edu.cn/en/)) at **Shanghai Jiao Tong University** ([SJTU](https://en.sjtu.edu.cn/)), where I was fortunate to be advised by Dr. [Ying Rong](https://www.acem.sjtu.edu.cn/en/faculty/rongying.html) and Dr. [Taotao He](https://taotaoohe.github.io/). From 2023 to 2025, I was a visiting doctoral researcher at the [Leeds School of Business](https://www.colorado.edu/business/), University of Colorado Boulder (CU Boulder), where I fortunately worked under the guidance of Dr. [Rui Zhang](https://rui-zhang.org/).
+Hi, I am Yunlong Wang (王云龙). I received my Ph.D. from the **Antai College of Economics and Management** ([ACEM](https://www.acem.sjtu.edu.cn/en/)) at **Shanghai Jiao Tong University** ([SJTU](https://en.sjtu.edu.cn/)), where I was fortunate to be advised by Dr. [Ying Rong](https://www.acem.sjtu.edu.cn/en/faculty/rongying.html) and Dr. [Taotao He](https://taotaoohe.github.io/). From 2023 to 2025, I was a visiting doctoral researcher at the [Leeds School of Business](https://www.colorado.edu/business/), University of Colorado Boulder (CU Boulder), where I had the privilege of working under the guidance of Dr. [Rui Zhang](https://rui-zhang.org/).
 
 **I will join the College of Management at Shenzhen University as an Assistant Professor in Fall 2026.**
 
