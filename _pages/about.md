@@ -8,26 +8,35 @@ redirect_from:
 output: true
 ---
 
-Hi, I am Yunlong Wang (王云龙), a sixth-year PhD candidate at **Shanghai Jiao Tong University** ([SJTU](https://en.sjtu.edu.cn/)), **Antai College of Economics and Management** ([ACEM](https://www.acem.sjtu.edu.cn/en/)), advised by Dr. [Ying Rong](https://www.acem.sjtu.edu.cn/en/faculty/rongying.html) and Dr. [Taotao He](https://taotaoohe.github.io/). I conducted visiting research at the University of Colorado Boulder (CU Boulder, [Leeds School of Business](https://www.colorado.edu/business/)) for two years (2023 - 2025), advised by Dr. [Rui Zhang](https://rui-zhang.org/). 
+Hi, I am Yunlong Wang (王云龙). I received my Ph.D. from the **Antai College of Economics and Management** ([ACEM](https://www.acem.sjtu.edu.cn/en/)) at **Shanghai Jiao Tong University** ([SJTU](https://en.sjtu.edu.cn/)), where I was fortunate to be advised by Dr. [Ying Rong](https://www.acem.sjtu.edu.cn/en/faculty/rongying.html) and Dr. [Taotao He](https://taotaoohe.github.io/). From 2023 to 2025, I was a visiting doctoral researcher at the [Leeds School of Business](https://www.colorado.edu/business/), University of Colorado Boulder (CU Boulder), where I fortunately worked under the guidance of Dr. [Rui Zhang](https://rui-zhang.org/).
 
-**I am on the 2025-2026 academic job market.**
+**I will join the College of Management at Shenzhen University as an Assistant Professor in Fall 2026.**
 
 My research lies at the intersection of **discrete choice modeling**, **optimization**, and **revenue management**, using mixed-integer programming approaches. I focus on the computational and algorithmic aspects of discrete choice models, as well as (social) network-based influence problems. I also have training in continuous optimization, particularly in advanced methods for algorithmic acceleration.
 
 I also gained industry research experiences at **Tencent** ([AI Lab](https://www.aiia-ai.org/col.jsp?id=184)) and **Huawei**, where I worked on accelerating machine learning algorithms and optimizing scheduling strategies for 5G base station operations, respectively.
+
+**I welcome applications and inquiries from prospective full-time research fellows, postdoctoral researchers, and Ph.D. students. Outstanding research fellows may have the opportunity to apply for faculty positions at Shenzhen University, subject to the university’s recruitment policies and performance evaluation. Interested candidates are welcome to contact me at <wylwork2018@gmail.com>.**
+
+<!-- Hi, I am Yunlong Wang (王云龙), Ph.D. from **Shanghai Jiao Tong University** ([SJTU](https://en.sjtu.edu.cn/)), **Antai College of Economics and Management** ([ACEM](https://www.acem.sjtu.edu.cn/en/)). I was fortunately advised by Dr. [Ying Rong](https://www.acem.sjtu.edu.cn/en/faculty/rongying.html) and Dr. [Taotao He](https://taotaoohe.github.io/) at SJTU. I conducted visiting research at the University of Colorado Boulder (CU Boulder, [Leeds School of Business](https://www.colorado.edu/business/)) for two years (2023 - 2025), advised by Dr. [Rui Zhang](https://rui-zhang.org/).  -->
+
+
+
 
 
 -----
 
 Research Papers
 ======
-## Under Review
-* [**Assortment Optimization for Online Video Games**](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5769002), with Fan You, Thomas Vossen, Rui Zhang, ***Production and Operations Management* (POM)**, *conditional accept*. [Job Market Paper]
-* [**An Integer Programming Approach for Quick-Commerce Assortment Planning**](https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2023.02996), with Yajing Chen, Taotao He, Ying Rong, ***Management Science***, *accept*. &nbsp;&nbsp;&nbsp;&nbsp;
+<!-- ## Under Review -->
 
 
 
 ## Publications
+
+* [**Assortment Optimization for Online Video Games**](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5769002), with Fan You, Thomas Vossen, Rui Zhang, ***Production and Operations Management* (POM)**, *forthcoming*. &nbsp;&nbsp;&nbsp;&nbsp; [UTD24]
+* [**An Integer Programming Approach for Quick-Commerce Assortment Planning**](https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2023.02996), with Yajing Chen, Taotao He, Ying Rong, ***Management Science***, *forthcoming*. &nbsp;&nbsp;&nbsp;&nbsp; [UTD24]
+
 * [Omnichannel Product Selection and Shelf Space Planning Optimization](https://www.sciencedirect.com/science/article/abs/pii/S0305048324000410), with Yajing Chen, Zhimin Wu, ***Omega***, 103074, 2024. 	&nbsp;&nbsp;&nbsp;&nbsp; [JCR Q1, ABS 3]
 * [Proximal Gradient/Semismooth Newton Methods for Projection onto a Polyhedron via the Duality Gap Active Set Strategy](https://link.springer.com/article/10.1007/s10915-023-02302-6), with Chungen Shen, Leihong Zhang, & Weihong Yang, ***Journal of Scientific Computing***, 97(1): 3, 2023.([Code](https://github.com/YLW2018/DGASS_CODE))		&nbsp;&nbsp;&nbsp;&nbsp; [JCR Q1]
 * [An Accelerated Active-Set Algorithm for a Quadratic Semi-definite Program with General Constraints](https://link.springer.com/article/10.1007/s10589-020-00228-5), with Chungen Shen, Wenjuan Xue, & Leihong Zhang, ***Computational Optimization and Applications***, 78(1): 1-42, 2021.([Code](https://github.com/YLW2018/AASA_CODE)) &nbsp;&nbsp;&nbsp;&nbsp;		[JCR Q1, ABS 3]
